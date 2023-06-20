@@ -421,3 +421,60 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
     );
   }
 }
+
+class MapPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Map Page'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              // Replace this with your map widget implementation
+              color: Colors.grey[300],
+              child: Center(
+                child: Text(
+                  'Map View',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle current location button press
+                  },
+                  child: Text('Show Current Location'),
+                ),
+                SizedBox(height: 16.0),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Search',
+                    border: OutlineInputBorder(),
+                    suffixIcon: Icon(Icons.search),
+                  ),
+                  // Handle search functionality
+                ),
+                SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle routing and directions button press
+                  },
+                  child: Text('Get Directions'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
