@@ -204,3 +204,8 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
 
     return temperatures;
   }
+
+  List<String> generateDaysOfWeek() {
+    // Placeholder logic to generate days of the week
+    return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  }
