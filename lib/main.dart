@@ -331,7 +331,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
               'Today\'s Weather',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 12),
             TextFormField(
               onChanged: (query) =>
                   searchLocations(query), // Pass the query as a parameter
@@ -340,18 +340,18 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 12),
             Text(
               'Location: $location', // Display the entered location
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Expanded(
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 15),
+                    SizedBox(height: 5),
                     AnimatedOpacity(
                       opacity: temperatures.isNotEmpty ? 1.0 : 0.0,
                       duration: Duration(milliseconds: 500),
@@ -360,7 +360,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 5),
                     Text(
                       'Weather Condition: ${weatherConditions.isNotEmpty ? weatherConditions[0] : ''}',
                       style: TextStyle(fontSize: 20),
@@ -386,7 +386,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -404,7 +404,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 32),
+                    SizedBox(height: 10),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
