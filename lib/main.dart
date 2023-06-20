@@ -82,7 +82,8 @@ class WeatherApp extends StatefulWidget {
 
 class _WeatherAppState extends State<WeatherApp> {
   int _currentIndex = 0;
-final List<Widget> _pages = [
+
+  final List<Widget> _pages = [
     WeatherHomePage(),
     MapPage(),
     DisasterPage(),
@@ -143,3 +144,22 @@ final List<Widget> _pages = [
     );
   }
 }
+
+class WeatherHomePage extends StatefulWidget {
+  @override
+  _WeatherHomePageState createState() => _WeatherHomePageState();
+}
+
+class _WeatherHomePageState extends State<WeatherHomePage> {
+  int _currentIndex = 0;
+  String searchQuery = '';
+  String location = '';
+  List<String> weatherConditions = [];
+  List<int> temperatures = [];
+
+  final List<Widget> _pages = [
+    WeatherHomePage(),
+    MapPage(),
+    DisasterPage(),
+    TemperaturePage(),
+  ];
