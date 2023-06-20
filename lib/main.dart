@@ -512,3 +512,56 @@ class DisasterPage extends StatelessWidget {
       imageUrl: 'assets/earthquake_pqr.jpg',
     ),
   ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Disaster Page'),
+      ),
+      body: ListView.builder(
+        itemCount: disasterCases.length,
+        itemBuilder: (context, index) {
+          DisasterCase caseItem = disasterCases[index];
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: InkWell(
+                onTap: () {
+                  // Handle case item tap if needed
+                },
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        caseItem.imageUrl,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        caseItem.name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: Text(caseItem.description),
+                      trailing: Icon(Icons.arrow_forward_ios),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
