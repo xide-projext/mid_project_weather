@@ -484,32 +484,32 @@ class DisasterPage extends StatelessWidget {
     DisasterCase(
       name: 'Hurricane 1',
       description: 'A powerful hurricane with wind speeds of 150 mph.',
-      imageUrl: 'assets/hurricane_xyz.jpg',
+      imageUrl: 'assets/hurricane1.jpeg',
     ),
     DisasterCase(
       name: 'Tornado 1',
       description: 'A destructive tornado causing widespread damage.',
-      imageUrl: 'assets/tornado_abc.jpg',
+      imageUrl: 'assets/tornado1.jpeg',
     ),
     DisasterCase(
       name: 'Earthquake 1',
       description: 'A major earthquake measuring 7.5 on the Richter scale.',
-      imageUrl: 'assets/earthquake_pqr.jpg',
+      imageUrl: 'assets/earthquake1.jpeg',
     ),
     DisasterCase(
       name: 'Hurricane 2',
       description: 'A powerful hurricane with wind speeds of 150 mph.',
-      imageUrl: 'assets/hurricane_xyz.jpg',
+      imageUrl: 'assets/hurricane2.jpeg',
     ),
     DisasterCase(
       name: 'Tornado 2',
       description: 'A destructive tornado causing widespread damage.',
-      imageUrl: 'assets/tornado_abc.jpg',
+      imageUrl: 'assets/tornado2.jpeg',
     ),
     DisasterCase(
       name: 'Earthquake 2',
       description: 'A major earthquake measuring 7.5 on the Richter scale.',
-      imageUrl: 'assets/earthquake_pqr.jpg',
+      imageUrl: 'assets/earthquake2.jpeg',
     ),
   ];
 
