@@ -291,3 +291,19 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
       );
     });
   }
+
+  IconData getWeatherIcon(String condition) {
+    // Map weather conditions to corresponding icons
+    switch (condition) {
+      case 'Sunny':
+        return Icons.wb_sunny;
+      case 'Cloudy':
+        return Icons.wb_cloudy;
+      case 'Rainy':
+        return Icons.grain;
+      case 'Snowy':
+        return Icons.ac_unit;
+      default:
+        return Icons.wb_sunny;
+    }
+  }
