@@ -180,3 +180,11 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
       generateTemperatures(); // Call the modified method here
     });
   }
+
+  List<String> generateWeatherConditions() {
+    // Placeholder logic to generate random weather conditions
+    List<String> conditions = ['Sunny', 'Cloudy', 'Rainy', 'Snowy'];
+    Random random = Random();
+    return List.generate(
+        7, (index) => conditions[random.nextInt(conditions.length)]);
+  }
