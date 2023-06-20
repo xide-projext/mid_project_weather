@@ -587,3 +587,27 @@ class TemperaturePage extends StatelessWidget {
     'Rotterdam'
   ];
   List<int> temperatures = [25, 28, 23, 27, 24];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Temperature'),
+      ),
+      body: ListView.separated(
+        itemCount: locations.length,
+        separatorBuilder: (context, index) => Divider(),
+        itemBuilder: (context, index) {
+          return Card(
+            elevation: 2,
+            child: ListTile(
+              leading: Icon(Icons.location_city),
+              title: Text(locations[index]),
+              subtitle: Text('Temperature: ${temperatures[index]}°C'),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
