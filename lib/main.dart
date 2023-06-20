@@ -163,3 +163,20 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
     DisasterPage(),
     TemperaturePage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    // Generate placeholder weather data
+    weatherConditions = generateWeatherConditions();
+    temperatures = generateTemperatures();
+  }
+
+  void searchLocations(String query) {
+    setState(() {
+      searchQuery = query;
+      location = query;
+      weatherConditions = generateWeatherConditions();
+      generateTemperatures(); // Call the modified method here
+    });
+  }
