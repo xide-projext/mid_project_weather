@@ -577,3 +577,13 @@ class DisasterCase {
     required this.imageUrl,
   });
 }
+
+class TemperaturePage extends StatelessWidget {
+  List<String> locations = [
+    'New York',
+    'Seoul',
+    'Cebu',
+    'Amsterdam',
+    'Rotterdam'
+  ];
+  List<int> temperatures = [25, 28, 23, 27, 24];
