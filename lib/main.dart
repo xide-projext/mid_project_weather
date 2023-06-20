@@ -307,3 +307,117 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
         return Icons.wb_sunny;
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Weather App'),
+        actions: [
+          InkWell(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Icon(Icons.settings),
+            ),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Today\'s Weather',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+            TextFormField(
+              onChanged: (query) =>
+                  searchLocations(query), // Pass the query as a parameter
+              decoration: InputDecoration(
+                labelText: 'Search location',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Location: $location', // Display the entered location
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 15),
+                    AnimatedOpacity(
+                      opacity: temperatures.isNotEmpty ? 1.0 : 0.0,
+                      duration: Duration(milliseconds: 500),
+                      child: Text(
+                        'Temperature: ${temperatures.isNotEmpty ? temperatures[0] : ''}°C',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      'Weather Condition: ${weatherConditions.isNotEmpty ? weatherConditions[0] : ''}',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Icon(
+                      getWeatherIcon(weatherConditions.isNotEmpty
+                          ? weatherConditions[0]
+                          : ''),
+                      size: 100,
+                      color: Colors.blue,
+                    ),
+                    SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'Lowest: ${getLowestTemperature()}°C',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        Text(
+                          'Highest: ${getHighestTemperature()}°C',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'Precipitation: ${Random().nextInt(20)} mm',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          'Humidity: ${Random().nextInt(100)}%',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          'Wind: ${Random().nextInt(30)} m/s',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 32),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: generateWeatherCards(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
