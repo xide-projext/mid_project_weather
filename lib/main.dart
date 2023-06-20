@@ -209,3 +209,19 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
     // Placeholder logic to generate days of the week
     return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   }
+
+  int getLowestTemperature() {
+    if (temperatures.isNotEmpty) {
+      return temperatures
+          .reduce((value, element) => value < element ? value : element);
+    }
+    return 0;
+  }
+
+  int getHighestTemperature() {
+    if (temperatures.isNotEmpty) {
+      return temperatures
+          .reduce((value, element) => value > element ? value : element);
+    }
+    return 0;
+  }
