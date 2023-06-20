@@ -478,3 +478,37 @@ class MapPage extends StatelessWidget {
     );
   }
 }
+
+class DisasterPage extends StatelessWidget {
+  List<DisasterCase> disasterCases = [
+    DisasterCase(
+      name: 'Hurricane 1',
+      description: 'A powerful hurricane with wind speeds of 150 mph.',
+      imageUrl: 'assets/hurricane_xyz.jpg',
+    ),
+    DisasterCase(
+      name: 'Tornado 1',
+      description: 'A destructive tornado causing widespread damage.',
+      imageUrl: 'assets/tornado_abc.jpg',
+    ),
+    DisasterCase(
+      name: 'Earthquake 1',
+      description: 'A major earthquake measuring 7.5 on the Richter scale.',
+      imageUrl: 'assets/earthquake_pqr.jpg',
+    ),
+    DisasterCase(
+      name: 'Hurricane 2',
+      description: 'A powerful hurricane with wind speeds of 150 mph.',
+      imageUrl: 'assets/hurricane_xyz.jpg',
+    ),
+    DisasterCase(
+      name: 'Tornado 2',
+      description: 'A destructive tornado causing widespread damage.',
+      imageUrl: 'assets/tornado_abc.jpg',
+    ),
+    DisasterCase(
+      name: 'Earthquake 2',
+      description: 'A major earthquake measuring 7.5 on the Richter scale.',
+      imageUrl: 'assets/earthquake_pqr.jpg',
+    ),
+  ];
