@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math';
 
+void main() {
+  runApp(WeatherApp());
+}
+
 class MyFormWidget extends StatefulWidget {
   @override
   _MyFormWidgetState createState() => _MyFormWidgetState();
@@ -70,3 +74,11 @@ class _MyFormWidgetState extends State<MyFormWidget>
     );
   }
 }
+
+class WeatherApp extends StatefulWidget {
+  @override
+  _WeatherAppState createState() => _WeatherAppState();
+}
+
+class _WeatherAppState extends State<WeatherApp> {
+  int _currentIndex = 0;
