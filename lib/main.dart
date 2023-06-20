@@ -82,3 +82,64 @@ class WeatherApp extends StatefulWidget {
 
 class _WeatherAppState extends State<WeatherApp> {
   int _currentIndex = 0;
+final List<Widget> _pages = [
+    WeatherHomePage(),
+    MapPage(),
+    DisasterPage(),
+    TemperaturePage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Weather App',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+//         scaffoldBackgroundColor: Colors.yellow,
+      ),
+      home: Scaffold(
+        backgroundColor: Colors.yellow,
+        body: _pages[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black, // <-- This works for fixed
+          selectedItemColor: Colors.greenAccent,
+          unselectedItemColor: Colors.grey,
+
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+            if (index == 0) {
+              Navigator.of(context).pushNamed('/home');
+            } else if (index == 1) {
+              Navigator.of(context).pushNamed('/map');
+            } else if (index == 2) {
+              Navigator.of(context).pushNamed('/disaster');
+            } else if (index == 3) {
+              Navigator.of(context).pushNamed('/temperature');
+            }
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.map),
+              label: 'Map',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.warning),
+              label: 'Disaster',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.thermostat),
+              label: 'Temperature',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
