@@ -565,3 +565,15 @@ class DisasterPage extends StatelessWidget {
     );
   }
 }
+
+class DisasterCase {
+  final String name;
+  final String description;
+  final String imageUrl;
+
+  DisasterCase({
+    required this.name,
+    required this.description,
+    required this.imageUrl,
+  });
+}
