@@ -188,3 +188,19 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
     return List.generate(
         7, (index) => conditions[random.nextInt(conditions.length)]);
   }
+
+  List<int> generateTemperatures() {
+    // Placeholder logic to generate random temperatures
+    Random random = Random();
+    List<int> temperatures =
+        List.generate(7, (index) => random.nextInt(40) - 10);
+
+    // Add a delay before updating the temperatures
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        temperatures = List.generate(7, (index) => random.nextInt(40) - 10);
+      });
+    });
+
+    return temperatures;
+  }
