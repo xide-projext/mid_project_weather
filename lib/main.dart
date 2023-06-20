@@ -225,3 +225,69 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
     }
     return 0;
   }
+
+  List<Widget> generateWeatherCards() {
+    // Generate weather cards for each day
+    return List.generate(7, (index) {
+      String day = generateDaysOfWeek()[index];
+      String condition = weatherConditions[index];
+      int temperature = temperatures[index];
+      int lowestTemperature = temperature - 5;
+      int highestTemperature = temperature + 5;
+
+      return AnimatedOpacity(
+        opacity: temperature != null ? 1.0 : 0.0,
+        duration: Duration(milliseconds: 500),
+        child: Container(
+          width: 120,
+          margin: EdgeInsets.symmetric(horizontal: 4),
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: Colors.grey[300],
+          ),
+          child: Column(
+            children: [
+              Text(
+                day,
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 8),
+              AnimatedOpacity(
+                opacity: temperature != null ? 1.0 : 0.0,
+                duration: Duration(
+                    milliseconds: 1000), // Adjust the duration as desired
+                child: Transform.rotate(
+                  angle: temperature != null ? pi / 4 : 0.0,
+                  child: Icon(
+                    getWeatherIcon(condition),
+                    size: 40,
+                    color: Colors.orange,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                '$temperature°C',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'L: ${temperature - 5}°C',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  Text(
+                    'H: ${temperature + 5}°C',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    });
+  }
