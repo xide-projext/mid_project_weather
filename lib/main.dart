@@ -102,7 +102,7 @@ class _WeatherAppState extends State<WeatherApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Weather App',
+      title: 'WeatherWise',
       theme: ThemeData(
         primarySwatch: Colors.purple,
 //         scaffoldBackgroundColor: Colors.yellow,
@@ -354,7 +354,7 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather App'),
+        title: Text('WeatherWise'),
         actions: [
           InkWell(
             child: Padding(
