@@ -2,9 +2,18 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(WeatherApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SearchQueryProvider(),
+      child: MaterialApp(
+        home: WeatherApp(),
+      ),
+    ),
+  );
 }
 
 class MyFormWidget extends StatefulWidget {
@@ -145,6 +154,18 @@ class _WeatherAppState extends State<WeatherApp> {
   }
 }
 
+class SearchQueryProvider extends ChangeNotifier {
+  String _searchQuery = '';
+
+  String get searchQuery => _searchQuery;
+
+  set searchQuery(String query) {
+    _searchQuery = query;
+    notifyListeners();
+  }
+}
+
+//Prev State//
 class WeatherHomePage extends StatefulWidget {
   @override
   _WeatherHomePageState createState() => _WeatherHomePageState();
@@ -164,20 +185,41 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
     TemperaturePage(),
   ];
 
-  @override
   void initState() {
     super.initState();
     // Generate placeholder weather data
     weatherConditions = generateWeatherConditions();
     temperatures = generateTemperatures();
+
+    final searchQueryProvider =
+        Provider.of<SearchQueryProvider>(context, listen: false);
+    searchQuery = searchQueryProvider
+        .searchQuery; // Retrieve the search query from the provider
+
+    retrieveSearchQuery(); // Add this line to retrieve the saved search query
   }
 
-  void searchLocations(String query) {
+  void retrieveSearchQuery() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String savedQuery = prefs.getString('searchQuery')?.toString() ?? '';
+    setState(() {
+      searchQuery = savedQuery ?? '';
+    });
+  }
+
+  void searchLocations(String query) async {
+    final searchQueryProvider =
+        Provider.of<SearchQueryProvider>(context, listen: false);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('searchQuery', query); // Save the search query
+
     setState(() {
       searchQuery = query;
       location = query;
       weatherConditions = generateWeatherConditions();
       generateTemperatures(); // Call the modified method here
+      searchQueryProvider.searchQuery =
+          query; // Update the search query in the provider
     });
   }
 
@@ -255,8 +297,8 @@ class _WeatherHomePageState extends State<WeatherHomePage> {
               SizedBox(height: 8),
               AnimatedOpacity(
                 opacity: temperature != null ? 1.0 : 0.0,
-                duration: Duration(
-                    milliseconds: 1000), // Adjust the duration as desired
+                duration:
+                    Duration(seconds: 5), // Adjust the duration as desired
                 child: Transform.rotate(
                   angle: temperature != null ? pi / 4 : 0.0,
                   child: Icon(
